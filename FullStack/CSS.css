@@ -45,7 +45,7 @@ body {
 }
 
 /* navigation bar */
-ul {
+.header ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -57,18 +57,18 @@ ul {
   width: 100%;
 }
 
-li {
+.header li {
   float: left;
   border-right: 1px solid var(--border);
 }
 
-li:last-child {
+.header li:last-child {
   border-right: none;
   border-left: 1px solid var(--border);
 }
 
 /* navigation bar style */
-li a {
+.header li a {
   display: block;
   color: #0c1011;
   text-align: center;
@@ -76,7 +76,7 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
+.header li a:hover {
   background-color: var(--accent);
 }
 
@@ -146,3 +146,7 @@ footer > p {
     opacity: auto;
   }
 } */
+
+.eventList {
+  margin-top: 3em;
+}

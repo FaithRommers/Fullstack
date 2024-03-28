@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<header>  
+<header class="header">  
   <!-- navigation bar  -->
     <ul> 
       <li><a href="Home.php">Home</a></li> 

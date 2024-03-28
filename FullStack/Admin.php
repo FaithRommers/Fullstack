@@ -9,7 +9,7 @@
 <body>
 
 
-  <header> 
+  <header class='header'> 
       <!-- navigation bar  -->
       <ul> 
         <li><a href="Home.php">Home</a></li> 
@@ -46,12 +46,53 @@
 </div>
 
 <div class="addEventToBand">
-    <form action="AddEventResponse.php" method= "POST">
+    <form action="AddEventToBandResponsePage.php" method= "POST">
       <input type="text" name="bandNaam" value="" placeholder="Band naam">
       <input type="text" name="eventNaam" value="" placeholder="Event naam">
       <input type="submit" name="knop" value="voeg toe">
     </form>
 </div>
+
+
+<div class="bandTabel">
+  <?php
+  $pdo = new PDO('mysql:host=localhost;dbname=casuscafe;port=3306','root','');
+    try{
+      $sql = "SELECT bandnaam, muziekgenre FROM band";
+      $result = $pdo->query($sql);
+    }catch(PDOException $e){
+      echo "eeeeeeeeeeeeeeeeeror: ". $e->getMessage();
+      die();
+    }
+
+    echo"<div class='list'>";
+    echo"<p class='anotherlist'>Band</p>";
+    echo"<ul class='bandlist'";
+      if($result->rowCount() > 0){
+      while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        echo "<li>".$row["bandnaam"]. "</li>";
+        }
+      }else{
+          echo "<p>Geeeeeeeeeeeeeeeeeeeeeeeeeeeeeen Data</p>";
+      }
+      echo "</ul>";
+      echo "</div>";
+
+      $result->execute(); 
+
+      echo"<div class='list'>";
+    echo"<p class='anotherlist'>genre</p>";
+    echo"<ul class='bandlist'";
+      if($result->rowCount() > 0){
+      while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        echo "<li>".$row["muziekgenre"]. "</li>";
+        }
+      }else{
+          echo "<p>Geeeeeeeeeeeeeeeeeeeeeeeeeeeeeen Data</p>";
+      }
+      echo "</ul>";
+      echo "</div>";
+ ?>
 
 
 
