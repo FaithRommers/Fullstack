@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +25,7 @@
 <main>
 
 <div>
-<form class = inlogzooi action="./InloggenRespondPage.php" method="POST">
+<form class = inlogzooi action="InloggenRespondPage.php" method="POST">
 		Email: <br> <input type="text" name="email" value=""> <br>
     Wachtwoord: <br> <input type="password" name="wachtwoord" value="">
 		<input type="submit" name="knop" value="verstuur">

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +19,8 @@
       <li><a href="Agenda.php">Agenda</a></li> 
       <li><a href="Admin.php">Admin</a></li> 
       <li style="float:right"><a class="active" href="Inloggen.php">Inloggen</a></li>
+
+
     </ul> 
   </header>
 
