@@ -7,21 +7,14 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="CSS.css" /> 
+  <link rel="stylesheet" type="text/css" href="Style/CSS.css" /> 
   <title>CasusCafe</title>
 </head>
 <body>
 
   <header class="header"> 
     <!-- navigation bar  -->
-    <ul> 
-      <li><a class="active" href="Home.php">Home</a></li> 
-      <li><a href="Agenda.php">Agenda</a></li> 
-      <li><a href="Admin.php">Admin</a></li> 
-      <li style="float:right"><a class="active" href="Inloggen.php">Inloggen</a></li>
-
-
-    </ul> 
+    <?php require_once 'Inclusions/NavBar.inc.php' ?>
   </header>
 
   <main>
@@ -35,8 +28,6 @@ session_start();
           log in of registreer om tickets te bestellen om u favoriete bands live te supporten of een plek te reserveren.
       </p>
     </div>
-
-    
 
   </main>
 

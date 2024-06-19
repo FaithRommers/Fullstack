@@ -7,33 +7,29 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="CSS.css" /> 
+  <link rel="stylesheet" type="text/css" href="Style/CSS.css" /> 
   <title>CasusCafe</title>
 </head>
 <body>
 
 <header class="header">  
   <!-- navigation bar  -->
-    <ul> 
-      <li><a href="Home.php">Home</a></li> 
-      <li><a href="Agenda.php">Agenda</a></li> 
-      <li><a href="Admin.php">Admin</a></li> 
-      <li style="float:right"><a class="active" href="Inloggen.php">Inloggen</a></li>
-    </ul> 
+    <?php require_once 'Inclusions/NavBar.inc.php' ?>
 </header>
 
 <main>
 
-<div>
-<form class = inlogzooi action="InloggenRespondPage.php" method="POST">
+<div class="inlog">
+<form class = inlogzooi action="Responses/InloggenRespondPage.php" method="POST">
 		Email: <br> <input type="text" name="email" value=""> <br>
     Wachtwoord: <br> <input type="password" name="wachtwoord" value="">
 		<input type="submit" name="knop" value="verstuur">
 	</form>
 </div>
 
-
-
+<?php if (isset($_GET['error'])) { ?>
+<p class="error"><?php echo $_GET['error']; ?></p>
+<?php } ?>
 
 </main>
 

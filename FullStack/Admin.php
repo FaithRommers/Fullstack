@@ -7,7 +7,7 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="CSS.css" /> 
+  <link rel="stylesheet" type="text/css" href="Style/CSS.css" /> 
   <title>CasusCafe</title>
 </head>
 <body>
@@ -15,44 +15,52 @@ session_start();
 
   <header class='header'> 
       <!-- navigation bar  -->
-      <ul> 
-        <li><a href="Home.php">Home</a></li> 
-        <li><a href="Agenda.php">Agenda</a></li> 
-        <li><a class="active" href="Admin.php">Admin</a></li> 
-        <li style="float:right"><a class="active" href="Inloggen.php">Inloggen</a></li>
-      </ul> 
+      <?php require_once 'Inclusions/NavBar.inc.php' ?>
   </header>  
 
 <main>
-
-<div class = "buttons">
-<button>aaaaaaaaaaaaaaaaaaaaaaaaa</button>
-</div>
-
 <!-- in database -->
 <div class="addBand">
-    <form action="AddBandRespondse.php" method= "POST">
+    <form action="Responses/AddBandRespondse.php" method= "POST">
       <input type="text" name="bandNaam" value="" placeholder="Band naam">
-      <input type="text" name="bandGenre" value="" placeholder="Band genre">
+      <select name="bandGenre">
+        <option value="" hidden disabled selected>(Kies genre)</option>
+        <option value="Pop">Pop</option>
+        <option value="Rock">Rock</option>
+        <option value="Metal">Metal</option>
+        <option value="Klassiek">Klassiek</option>
+        <option value="Hiphop">Hiphop</option>
+        <option value="R&B">R&B</option>
+        <option value="Electronic">Electronic</option>
+        <option value="Dance">Dance</option>
+        <option value="Jazz">Jazz</option>
       <input type="submit" name="knop" value="voeg toe">
     </form>
 </div>
 
 <!-- on the page -->
 <div class="addEvent">
-    <form action="AddEventResponse.php" method= "POST">
+    <form action="Responses/AddEventResponse.php" method= "POST">
       <input type="text" name="eventNaam" value="" placeholder="Event naam">
       <input type="text" name="datum" value="" placeholder="yyyy-mm-dd">
       <input type="time" name="tijd" value="">
       <input type="decimal" name="prijs" value="" placeholder="entreeprijs">
       <input type="submit" name="knop" value="voeg toe">
-    </form>
+    </form> 
 </div>
 
 <div class="addEventToBand">
-    <form action="AddEventToBandResponsePage.php" method= "POST">
-      <input type="text" name="bandNaam" value="" placeholder="Band naam">
-      <input type="text" name="eventNaam" value="" placeholder="Event naam">
+    <form action="Responses/AddEventToBandResponsePage.php" method= "POST">
+      <!-- <input type="text" name="bandNaam" value="" placeholder="Band naam"> -->
+      <select name="band">
+        <option value="" hidden disabled selected>(Kies band)</option>
+        <?php require_once "Inclusions/AddBand.inc.php"; ?>
+        </select>
+      <select name="optreden">
+        <option value="" hidden disabled selected>(Kies event)</option>
+        <?php require_once "Inclusions/AddEvent.inc.php"; ?>
+      <!-- <input type="text" name="eventNaam" value="" placeholder="Event naam"> -->
+       </select>
       <input type="submit" name="knop" value="voeg toe">
     </form>
 </div>
@@ -60,50 +68,10 @@ session_start();
 
 <div class="bandTabel">
   <?php
-  $pdo = new PDO('mysql:host=localhost;dbname=casuscafe;port=3306','root','');
-    try{
-      $sql = "SELECT bandnaam, muziekgenre FROM band";
-      $result = $pdo->query($sql);
-    }catch(PDOException $e){
-      echo "eeeeeeeeeeeeeeeeeror: ". $e->getMessage();
-      die();
-    }
-
-    echo"<div class='list'>";
-    echo"<p class='anotherlist'>Band</p>";
-    echo"<ul class='bandlist'";
-      if($result->rowCount() > 0){
-      while($row = $result->fetch(PDO::FETCH_ASSOC)){
-        echo "<li>".$row["bandnaam"]. "</li>";
-        }
-      }else{
-          echo "<p>Geeeeeeeeeeeeeeeeeeeeeeeeeeeeeen Data</p>";
-      }
-      echo "</ul>";
-      echo "</div>";
-
-      $result->execute(); 
-
-      echo"<div class='list'>";
-    echo"<p class='anotherlist'>genre</p>";
-    echo"<ul class='bandlist'";
-      if($result->rowCount() > 0){
-      while($row = $result->fetch(PDO::FETCH_ASSOC)){
-        echo "<li>".$row["muziekgenre"]. "</li>";
-        }
-      }else{
-          echo "<p>Geeeeeeeeeeeeeeeeeeeeeeeeeeeeeen Data</p>";
-      }
-      echo "</ul>";
-      echo "</div>";
+  require_once "Inclusions/Bands.inc.php"; //connects to database
  ?>
 
-
-
-
-
 </main>
-
     <footer> 
       <p>&copy; CasusCafe 2024</p> 
     </footer> 

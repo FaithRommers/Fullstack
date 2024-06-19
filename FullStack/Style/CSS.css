@@ -1,0 +1,161 @@
+/* color palet
+
+this one
+--text: #0c1311;
+--background: #f3f7f6;
+--primary: #629d87;
+--secondary: #adb7cc;
+--accent: #8a85b2;
+
+or
+
+--text: #0c1011;
+--background: #fafcfc;
+--primary: #48a7ba;
+--secondary: #94d7e5;
+--accent: #50cde6;
+
+or
+
+--text: #091f13;
+--background: #f1fbf7;
+--primary: #42c48d;
+--secondary: #98d8df;
+--accent: #76b3d4;
+*/
+
+:root {
+  --text: #0c1011;
+  --background: #fafcfc;
+  --primary: #48a7ba;
+  --secondary: #94d7e5;
+  --accent: #50cde6;
+  --border: #3f3f3f;
+  --shadow: #00000069;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* entire site body  */
+body {
+  background-color: var(--background);
+  height: 100%;
+  width: 100%;
+}
+
+/* navigation bar */
+.header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--primary);
+  border: 1px solid var(--text);
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.header li {
+  float: left;
+  border-right: 1px solid var(--border);
+}
+
+.header li:last-child {
+  border-right: none;
+  border-left: 1px solid var(--border);
+}
+
+/* navigation bar style */
+.header li a {
+  display: block;
+  color: #0c1011;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.header li a:hover {
+  background-color: var(--accent);
+}
+
+.active {
+  background-color: var(--secondary);
+}
+
+/* paragraph styling */
+.wooooParagraphy {
+  background-color: var(--primary);
+  padding: 5px;
+
+  width: 60%;
+  margin: auto;
+  margin-top: 270px; /*  met 48px komt het recht onder de nav bar  */
+  margin-bottom: 170px;
+
+  height: auto;
+  border: 1px solid var(--border);
+  box-shadow: 3px 3px 6px var(--shadow);
+}
+
+.wooooParagraphy > p {
+  font-size: 20px;
+  color: var(--text);
+  text-align: center;
+}
+
+/* button style admin page */
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 4em;
+}
+
+/* inlog style  */
+.inlog {
+  display: flex;
+  flex-direction: column;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.inlogzooi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--secondary);
+  padding: 2em;
+  margin-top: 40em;
+}
+
+/* footer style */
+footer {
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  position: fixed;
+  background-color: var(--primary);
+  border: 1px solid var(--border);
+
+  display: flex;
+  justify-content: space-around;
+}
+
+footer > p {
+  font-size: 12px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.eventList {
+  margin-top: 3em;
+}
+
+.addBand {
+  margin-top: 3em;
+}
