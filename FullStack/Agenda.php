@@ -17,11 +17,11 @@ session_start();
   <?php require_once 'Inclusions/NavBar.inc.php' ?>
 </header>
 
-<main>
+<div class="agenda">
 <?php
   require_once "Inclusions/Events.php"
 ?>
-</main>
+</div>
 
 <footer> 
       <p>&copy; CasusCafe 2024</p> 

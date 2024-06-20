@@ -14,12 +14,7 @@ try {
 if($resultEvent->rowCount() > 0) {
     while($row = $resultEvent->fetch(PDO::FETCH_ASSOC)) {
         echo "<div class='event'>";
-        echo "<p class='eventName'>".$row["naam"]."</p>";
-        echo "<div class='eventInfo'>";
-        echo "<p>Datum: ".$row["datum"]."</p>";
-        echo "<p>Aanvangstijd: ".$row["begintijd"]."</p>";
-        echo "<p>Prijs: ".$row["entree"]." Euro</p>";
-        echo "</div>";
+        echo "<h1 class='eventName'>".$row["naam"]."</h1>";
         echo "<div class='bandsEvent'>";
 
         try {
@@ -31,8 +26,8 @@ if($resultEvent->rowCount() > 0) {
 
             if(count($bands) > 0) {
                 echo "<div>";
-                echo "<p>Artiesten</p>";
-                echo "<ul>";
+                echo "<h2>Artiesten</h2>";
+                echo "<ul class= bandNaam>";
                 foreach ($bands as $bandRow) {
                     echo "<li>".$bandRow["bandnaam"]."</li>";
                 }
@@ -40,8 +35,8 @@ if($resultEvent->rowCount() > 0) {
                 echo "</div>";
                 
                 echo "<div>";
-                echo "<p>Genre</p>";
-                echo "<ul>";
+                echo "<h2>Genre</h2>";
+                echo "<ul class= eventNaam>";
                 foreach ($bands as $bandRow) {
                     echo "<li>".$bandRow["muziekgenre"]."</li>";
                 }
@@ -55,6 +50,11 @@ if($resultEvent->rowCount() > 0) {
         }
         
         echo "</div>";
+        echo "<div class='eventInfo'>";
+        echo "<h3>Datum: ".$row["datum"]."</h3>";
+        echo "<h3>Aanvangstijd: ".$row["begintijd"]."</h3>";
+        echo "</div>";
+        echo "<h3>Prijs: ".$row["entree"]." Euro</h3>";
         echo "</div>";
     }
 } else {

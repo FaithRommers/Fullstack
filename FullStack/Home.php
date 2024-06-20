@@ -11,13 +11,10 @@ session_start();
   <title>CasusCafe</title>
 </head>
 <body>
-
   <header class="header"> 
     <!-- navigation bar  -->
     <?php require_once 'Inclusions/NavBar.inc.php' ?>
   </header>
-
-  <main>
     <div class="wooooParagraphy"> 
       <p>EasyTiger Patio heeft een klein cafe/muziektheater genaamd CasusCafe dat muziekavonden organiseert waarop bands op bezoek komen om te spelen. 
           Op 1 avond is er ruimte voor een hoofdact en een
@@ -28,10 +25,6 @@ session_start();
           log in of registreer om tickets te bestellen om u favoriete bands live te supporten of een plek te reserveren.
       </p>
     </div>
-
-  </main>
-
-
   <footer> 
       <p>&copy; CasusCafe 2024</p> 
   </footer> 

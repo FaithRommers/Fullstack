@@ -10,7 +10,7 @@ require_once "dbCon.inc.php"; //connects to database
     }
 
     echo"<div class='list'>";
-    echo"<p class='anotherlist'>Band</p>";
+    echo"<h3 class='anotherlist'>Band</h3>";
     echo"<ul class='bandlist'";
       if($result->rowCount() > 0){
       while($row = $result->fetch(PDO::FETCH_ASSOC)){
@@ -25,7 +25,7 @@ require_once "dbCon.inc.php"; //connects to database
       $result->execute(); 
 
       echo"<div class='list'>";
-    echo"<p class='anotherlist'>genre</p>";
+    echo"<h3 class='anotherlist'>Genre</h3>";
     echo"<ul class='bandlist'";
       if($result->rowCount() > 0){
       while($row = $result->fetch(PDO::FETCH_ASSOC)){
