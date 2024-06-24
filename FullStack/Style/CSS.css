@@ -41,9 +41,13 @@ or
 
 /* entire site body  */
 body {
-  background-color: var(--background);
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
+  background-image: url("Images/MusicNotes.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 /* navigation bar */
@@ -223,11 +227,15 @@ footer > p {
 .bandNaam,
 .eventNaam {
   list-style: none;
+  margin-bottom: 1em;
 }
 
 .eventInfo {
   display: flex;
   flex-direction: row;
+  gap: 2em;
+  text-align: center;
+  margin-bottom: 1em;
 }
 
 .agenda {

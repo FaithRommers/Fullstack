@@ -9,8 +9,11 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="Style/CSS.css" /> 
   <title>CasusCafe</title>
+  <link rel="icon" type="image/x-icon" href="Images/favicon.ico">
 </head>
 <body>
+
+
 
 <header class="header">  
   <!-- navigation bar  -->
@@ -32,6 +35,7 @@ session_start();
 <?php } ?>
 
 </main>
+
 
 <footer> 
   <p>&copy; CasusCafe 2024</p> 

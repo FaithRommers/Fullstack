@@ -9,6 +9,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="Style/CSS.css" /> 
   <title>CasusCafe</title>
+  <link rel="icon" type="image/x-icon" href="Images/favicon.ico">
 </head>
 <body>
   <header class="header"> 
@@ -25,6 +26,7 @@ session_start();
           log in of registreer om tickets te bestellen om u favoriete bands live te supporten of een plek te reserveren.
       </p>
     </div>
+
   <footer> 
       <p>&copy; CasusCafe 2024</p> 
   </footer> 
