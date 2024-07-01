@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start();//start sessie
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +13,17 @@ session_start();
 </head>
 <body>
  
+<style>
+   /* de achtergrondafbeelding */
+    body {
+        overflow-x: hidden;
+        background-image: url("Images/MusicNotes.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        }
+</style>
+
 <header class="header">
   <!-- navigation bar  -->
   <?php require_once 'Inclusions/NavBar.inc.php' ?>
@@ -20,6 +31,7 @@ session_start();
 
 <div class="agenda">
 <?php
+//voert het script in events.php 1 keer uit
   require_once "Inclusions/Events.php"
 ?>
 </div>

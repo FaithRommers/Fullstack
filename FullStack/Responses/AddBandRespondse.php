@@ -1,35 +1,38 @@
 <?php
-session_start();
+session_start(); // Start de sessie
 
+// Controleerd of het verzoek een POST-verzoek is
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Haalt de bandnaam en het genre op uit het POST-verzoek
+    $naam = $_POST["bandNaam"];
+    $genre = $_POST["bandGenre"];
 
+    try {
+        // Verbind met de database
+        require_once "../Inclusions/dbCon.inc.php"; 
 
+        // SQL-query om nieuwe band in tabel 'band' te voegen
+        $query = "INSERT INTO band (bandnaam, muziekgenre) VALUES (?, ?);";
 
-if($_SERVER["REQUEST_METHOD"] =="POST"){
-  $naam = $_POST["bandNaam"];
-  $genre = $_POST["bandGenre"];
+        // Bereid de query voor
+        $stmt = $pdo->prepare($query);
 
-  try{
-  //  $pdo = new PDO('mysql:host=localhost;dbname=casuscafe;port=3306','root','');
-    require_once "../Inclusions/dbCon.inc.php"; //connects to database
+        // Voer de query uit met de opgehaalde gegevens
+        $stmt->execute([$naam, $genre]);
 
-    $query = "INSERT INTO band (bandnaam, muziekgenre) VALUES (?, ?);";
+        // Maak de databaseverbinding en statement leeg
+        $pdo = null;
+        $stmt = null;
 
-    $stmt = $pdo->prepare($query);
+        // Redirect naar de admin-pagina
+        header("location: ../Admin.php");
 
-    $stmt -> execute([$naam, $genre]);
-
-    $pdo = null;
-    $stmt = null;
-
-    header("location: ../Admin.php");
-
-    die();
-  } catch(PDOException $e){
-    die("Query failed". $e->getMessage());
-
-  }
-}
-
-else {
-  header("location: ../Home.php");
+        die(); // Stopt de scriptuitvoering
+    } catch (PDOException $e) {
+        // Toon foutmelding als de query faalt
+        die("Query failed: " . $e->getMessage());
+    }
+} else {
+    // Als het geen POST-verzoek is, redirect naar de home-pagina
+    header("location: ../Home.php");
 }

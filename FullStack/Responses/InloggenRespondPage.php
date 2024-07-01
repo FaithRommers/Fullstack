@@ -18,54 +18,53 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
   try {
-    require_once "../Inclusions/dbCon.inc.php"; //connects to database
+    //connects to database
+    require_once "../Inclusions/dbCon.inc.php"; 
 
   
   } catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage(); // Foutmelding bij een mislukte database verbinding
+    // Foutmelding bij een mislukte database verbinding
+    echo "Connection failed: " . $e->getMessage(); 
   }
 }
 
 
+// Controleerd of e-mail en wachtwoord POST-verzoek zijn
 if (isset($_POST['email']) && isset($_POST['wachtwoord'])) {
+  if (empty($email)) {
+$_SESSION['error'] = "Geen email ingevuld"; // Toon foutmelding als het e-mailadres leeg is
+      header("Location: ../Inloggen.php");      
+      exit();
+  } else if (empty($wachtwoord)) {
+    $_SESSION['error'] = "Geen wachtwoord ingevuld"; 
+      header("Location: ../Inloggen.php"); // Toon foutmelding als het wachtwoord leeg is
+      exit();
+  } else {
+      // Query om gebruiker op te halen uit database op basis van e-mailadres
+      $sql = "SELECT voornaam, achternaam, email, wachtwoord FROM gebruiker WHERE email = :email";
+      $query = $pdo->prepare($sql);
+      $query->execute(['email' => $email]);
+      // Haal het resultaat op als array
+      $row = $query->fetch(PDO::FETCH_ASSOC); 
 
-    if (empty($email)) {
-
-       // header("Location: Inloggen.php?error=User Name is required");
-        echo "Geen email ingevuld";
-        exit();
-
-    }else if(empty($wachtwoord)){
-
-        //header("Location: Inloggen.php?error=Password is required");
-        echo "Geen wachtwoord ingevuld";
-        exit();
-
-    }else{
-
-        $sql = "SELECT voornaam, achternaam, email, wachtwoord FROM gebruiker WHERE email = :email";
-        $query = $pdo->prepare($sql);
-        $query->execute(['email' => $email]);
-        //print_r($result);
-
-        $row = $query->fetch(PDO::FETCH_ASSOC);
-
-        if ($row){
-            
-            if ($wachtwoord === $row["wachtwoord"]){
-              $_SESSION["user"] = array("naam" => $row["voornaam"]);
-              header("Location: ../Home.php");
-                exit();
-            }else{
-              header("Location: ../Inloggen.php");
-                exit();
-            }
-          } else{
-            header("Location: ../Inloggen.php");
-                exit();
+      // Controleerd of de gebruiker is gevonden
+      if ($row) {
+          // Controleerd of ingevoerde wachtwoord overeenkomt met wachtwoord in de database
+          if ($wachtwoord === $row["wachtwoord"]) {
+            // Sla de gebruikersnaam op in de sessie
+              $_SESSION["user"] = array("naam" => $row["voornaam"]); 
+              header("Location: ../Home.php"); // Redirect naar de home-pagina
+              exit();
+          } else {
+              header("Location: ../Inloggen.php"); // Redirect naar inlogpagina bij verkeerd wachtwoord
+              exit();
           }
-    }
-}else{
-    header("Location: ../Inloggen.php");
-    exit();
+      } else {
+          header("Location: ../Inloggen.php"); // Redirect naar inlogpagina als de gebruiker niet is gevonden
+          exit();
+      }
+  }
+} else {
+  header("Location: ../Inloggen.php"); // Redirect naar de inlogpagina als e-mail of wachtwoord niet zijn getyped
+  exit();
 }

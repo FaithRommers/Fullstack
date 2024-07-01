@@ -5,7 +5,8 @@ if (isset($_SESSION["user"])) { //checks if user is logged in
     
     $_SESSION = array(); //logs user out
     session_destroy();
-    
-header('Location: ../home.php'); //sends you to back home
+    //sends you to back home
+header('Location: ../home.php'); 
+// Beëindig het script
     exit();
 }

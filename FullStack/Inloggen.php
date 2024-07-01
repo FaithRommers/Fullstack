@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); // Start de sessie
 ?>
 
 <!DOCTYPE html>
@@ -13,33 +13,53 @@ session_start();
 </head>
 <body>
 
-
+<style>
+    /* de achtergrondafbeelding */
+    body {
+        overflow-x: hidden;
+        background-image: url("Images/MusicNotes.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
 
 <header class="header">  
-  <!-- navigation bar  -->
+  <!-- Navigatiebalk invoegen -->
     <?php require_once 'Inclusions/NavBar.inc.php' ?>
 </header>
 
 <main>
+  <!-- Inlogformulier -->
+  <div class="inlog">
+    <form class="inlogzooi" action="Responses/InloggenRespondPage.php" method="POST">
+      <!-- email -->
+      Email: <br> <input type="text" name="email" value=""> <br>
+     <!-- error als je het niet heb ingevuld -->
+      <?php if (isset($_SESSION['error'])) { ?>
+    <p class="error"><?php echo $_SESSION['error']; ?></p>
+  <?php 
+    $_SESSION['error'] = '';
+} ?>
 
-<div class="inlog">
-<form class = inlogzooi action="Responses/InloggenRespondPage.php" method="POST">
-		Email: <br> <input type="text" name="email" value=""> <br>
-    Wachtwoord: <br> <input type="password" name="wachtwoord" value="">
-		<input type="submit" name="knop" value="verstuur">
-	</form>
-</div>
-
-<?php if (isset($_GET['error'])) { ?>
-<p class="error"><?php echo $_GET['error']; ?></p>
-<?php } ?>
-
+      <!-- wacht woord. -->
+      Wachtwoord: <br> <input type="password" name="wachtwoord" value="">
+      <input type="submit" name="knop" value="verstuur">
+      <!-- error als je het niet heb ingevuld -->
+      <?php if (isset($_SESSION['error'])) { ?>
+    <p class="error"><?php echo $_SESSION['error']; ?></p>
+  <?php 
+    $_SESSION['error'] = '';
+} ?>
+    </form>
+    
+  </div>
+  
 </main>
 
-
-<footer> 
-  <p>&copy; CasusCafe 2024</p> 
-</footer> 
+<footer>
+  <p>&copy; CasusCafe 2024</p>
+</footer>
 
 </body>
 </html>

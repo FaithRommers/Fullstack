@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); // Start de sessie
 ?>
 
 <!DOCTYPE html>
@@ -12,16 +12,26 @@ session_start();
   <link rel="icon" type="image/x-icon" href="Images/favicon.ico">
 </head>
 <body>
-
+<style>
+   /* de achtergrondafbeelding */
+    body {
+        overflow-x: hidden;
+        background-image: url("Images/MusicNotes.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        }
+</style>
 
   <header class='header'> 
-      <!-- navigation bar  -->
+      <!-- navigatiebalk -->
       <?php require_once 'Inclusions/NavBar.inc.php' ?>
   </header>  
-<!-- in database -->
+
 
 <div class="addAdmin">
   <div class="addBand">
+      <!-- formulier om een band toe te voegen met een dropdown menu voor de genre-->
       <form action="Responses/AddBandRespondse.php" method= "POST">
         <input type="text" name="bandNaam" value="" placeholder="Band naam">
         <select name="bandGenre">
@@ -39,7 +49,7 @@ session_start();
       </form>
   </div>
 
-  <!-- on the page -->
+  <!-- formulier om een evenement toe te voegen -->
   <div class="addEvent">
       <form action="Responses/AddEventResponse.php" method= "POST">
         <input type="text" name="eventNaam" value="" placeholder="Event naam">
@@ -50,6 +60,7 @@ session_start();
       </form> 
   </div>
 
+  <!-- formulier om een band aan een evenement toe te voegen via 2 dropdowm menu's -->
   <div class="addEventToBand">
       <form action="Responses/AddEventToBandResponsePage.php" method= "POST">
         <select name="band">
@@ -65,6 +76,7 @@ session_start();
       </form>
   </div>
 
+  <!-- formulier om een evenement te verwijderen -->
   <div class="removeEvent">
   <form action="Responses/RemoveEvent.php" method= "POST">
       <select name="event">
@@ -75,6 +87,7 @@ session_start();
     </form>
   </div>
 
+  <!-- formulier om een band te verwijderen -->
   <div class="removeBand"> 
     <form action="Responses/RemoveBand.php" method= "POST">
       <select name="band">
@@ -87,8 +100,9 @@ session_start();
 
 </div>
 
+<!-- weergave van de bandtabel -->
 <div class="bandTabel">
-  <?php  require_once "Inclusions/Bands.inc.php"; //connects to database?>
+  <?php  require_once "Inclusions/Bands.inc.php"; //voert het script in bands.inc.php 1 keer uit?>
  </div>
     <footer> 
       <p>&copy; CasusCafe 2024</p> 
